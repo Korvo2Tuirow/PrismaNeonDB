@@ -25,7 +25,7 @@ export const ShowData = () => {
         <div 
         className="flex border border-gray-700 m-1 p-2 shadow-sm shadow-slate-800" 
         key={item.id}>
-          {item.url}
+          ID:{(item.id)} - {item.url}
         </div>))
       }
     </div>
