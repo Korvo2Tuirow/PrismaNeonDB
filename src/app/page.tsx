@@ -1,8 +1,13 @@
+
+import { AddData } from "@/components/AddData";
 import { ShowData } from "@/components/ShowData";
 
 const Home = () => {
   return (
-    <ShowData />
+    <div>
+      <AddData />
+      <ShowData />
+    </div>
   )
 }
 
