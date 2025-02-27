@@ -2,13 +2,12 @@
 
 import { POST } from "@/app/api/addData/route";
 import { useState } from "react";
-
 export const AddData = () => {
-    const [getData, setGetData] = useState<string>('');
+    const [getData, setGetData] = useState<string>(''); 
 
     const handleSubmit = async () => {
         await POST(getData)
-        setGetData("");
+        setGetData("");             
     }
 
     return (
