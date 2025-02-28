@@ -11,11 +11,7 @@ export const POST = async (data: string) => {
      await prisma.serverTv.createMany({
          data:{url: req}
      });  
-    
-     if(req.length > 0){
-      
-         prisma.$disconnect        
-     }
+     prisma.$disconnect     
     
     }     
 }

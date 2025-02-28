@@ -1,10 +1,9 @@
 "use client"
 
+import { DEL } from "@/app/api/delData/route";
 import { GET } from "@/app/api/getData/route";
 import { useStatusStore } from "@/store/statusPost";
 import { useEffect, useState } from "react";
-
-
 
 type Props = {
   id: number;
@@ -19,36 +18,42 @@ export const ShowData = () => {
   const fetchData = async () => {
     const data = await GET();
     setRes(data);
-    setUpload(false); // Resetando o estado após carregar os dados
+    setUpload(false);
   };
 
   useEffect(() => {
-    fetchData(); // Chama a função ao montar o componente
+    fetchData();
   }, []);
 
   useEffect(() => {
     if (upload) {
-      fetchData(); // Chama a função quando upload muda
+      fetchData();
     }
   }, [upload]);
 
+  const handleDel = async (id: number) => {
+    await DEL(id);
+    fetchData()
+  }
 
   return (
     <div className="border p-5 m-1 gap-5 justify-between items-center">
 
       {(res.length === 0) &&
-
-        <div className=" flex flex-col justify-center items-center">
-          <div className="loader w-[100px]"></div>
-          <p>CARREGANDO</p>
-        </div>}
-
+        <div className=" flex justify-center items-center">
+          <div className="loader w-[100px]"></div>         
+        </div>
+      }
 
       {res.map((item) => (
         <div
-          className="flex border border-gray-700 m-1 p-2  bg-white/10"
+          className="flex justify-between border border-gray-700 m-1 p-2  bg-white/10"
           key={item.id}>
-          → ID:{(item.id)} - {item.url}
+          <p>→ ID:{(item.id)} - {item.url}</p>
+          <button
+            value={item.id}
+            onClick={() => handleDel(item.id)}
+          >❌</button>
         </div>))
       }
 
