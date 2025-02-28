@@ -1,16 +1,16 @@
 "use server"
 
 import { PrismaClient } from "@prisma/client";
-import { redirect } from "next/navigation";
 
 const prisma = new PrismaClient();
 
-export const POST = async (data: string) => {
+export const POST = async (data: string) => {  
+
     const req = (data).trim();
     if(req.length > 0) {
      await prisma.serverTv.createMany({
          data:{url: req}
-     });
+     });  
     
      if(req.length > 0){
       

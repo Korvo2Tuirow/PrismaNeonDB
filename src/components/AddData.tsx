@@ -1,13 +1,16 @@
 "use client"
 
 import { POST } from "@/app/api/addData/route";
+import { useStatusStore } from "@/store/statusPost";
 import { useState } from "react";
 export const AddData = () => {
     const [getData, setGetData] = useState<string>(''); 
-
+    const setUpload = useStatusStore((state) => state.setUpload);
+ 
     const handleSubmit = async () => {
         await POST(getData)
-        setGetData("");             
+        setGetData(""); 
+        setUpload(true);            
     }
 
     return (
