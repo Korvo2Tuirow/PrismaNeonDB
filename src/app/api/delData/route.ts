@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export const DEL = async (id:number) => {
     
-    const data = await prisma.serverTv.delete({
+    await prisma.serverTv.delete({
         where:{id:id}}
     );
 
