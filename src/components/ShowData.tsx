@@ -55,17 +55,19 @@ export const ShowData = () => {
 
 
   return (
-    <div className="border p-5 m-1 gap-5 justify-between items-center">
+    <div className="border px-5 m-1  justify-between items-center">
 
       {(res.length === 0) &&
-        <div className=" flex justify-center items-center">
+        <div className=" flex flex-col justify-center items-center p-5">
           <div className="loader w-[100px]"></div>
+          <p>BUSCANDO...</p>
         </div>
       }
 
       {res.map((item) => (
+        
         <div
-          className="flex  justify-between border border-gray-700 m-1 p-2  bg-white/10"
+          className="flex  flex-col gap-3 justify-between border border-gray-700 my-5 p-2  bg-white/10"
           key={item.id}>
 
           {dataEdit === item.id ? (
@@ -74,19 +76,22 @@ export const ShowData = () => {
               type="text"
               value={newUrl}
               onChange={(e) => setNewUrl(e.target.value)}
-              className="text-black w-full max-w-4xl p-1 mr-3"
+              className="text-black w-full  p-1 "
             />
           )
             :
             (
+              <>
               <p>→ ID:{(item.id)} - {item.url}</p>
+              <hr />
+              </>
             )
           }
 
-          <div className="flex gap-5">
+          <div>
 
             {dataEdit === item.id ? (
-              <div className="flex gap-5">
+              <div className="flex gap-5 mt-2">
 
                 <button
                   className="text-green-500"

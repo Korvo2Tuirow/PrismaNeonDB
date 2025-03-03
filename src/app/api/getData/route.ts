@@ -5,7 +5,9 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient();
 
 export const GET = async () => {
-    const data = await prisma.serverTv.findMany();    
+    const data = await prisma.serverTv.findMany(
+        {orderBy: {id: "asc"}}
+    );    
     return data;
 }
  
