@@ -17,6 +17,7 @@ export const ShowData = () => {
   const upload = useStatusStore((state) => state.upload);
   const [dataEdit, setDataEdit] = useState<number>()
   const [newUrl, setNewUrl] = useState<string>('')
+  const [search, setSearch] = useState<string>('')
 
   const fetchData = async () => {
     const data = await GET();
@@ -53,6 +54,7 @@ export const ShowData = () => {
     setDataEdit(0);
   }
 
+  console.log(res)
 
   return (
     <div className="border px-5 m-1  justify-between items-center">
@@ -62,6 +64,20 @@ export const ShowData = () => {
           <div className="loader w-[100px]"></div>
           <p>BUSCANDO...</p>
         </div>
+      }
+
+      {(res.length > 0) &&
+
+      <div className="flex gap-5 py-2 items-center">
+        <p>Buscar</p>
+        <input 
+        type="text"  
+        className="w-full p-1 text-black"
+        value={search}
+        onChange={(e)=>setSearch(e.target.value)}
+        
+        />
+      </div>
       }
 
       {res.map((item) => (
