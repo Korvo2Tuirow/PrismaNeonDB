@@ -19,6 +19,7 @@ export const ShowData = () => {
   const [newUrl, setNewUrl] = useState<string>('')
   const [search, setSearch] = useState<string>('')
 
+
   const fetchData = async () => {
     const data = await GET();
     setRes(data);
@@ -52,9 +53,12 @@ export const ShowData = () => {
 
   const handleEditCancel = ()=>{
     setDataEdit(0);
-  }
+  }    
 
-  console.log(res)
+    // Filtra os itens localmente no array
+    const filteredResults = res.filter((item) =>
+        item.url.toLowerCase().includes(search.toLowerCase()) // Case insensitive
+    );
 
   return (
     <div className="border px-5 m-1  justify-between items-center">
@@ -68,19 +72,19 @@ export const ShowData = () => {
 
       {(res.length > 0) &&
 
-      <div className="flex gap-5 py-2 items-center">
+      <div className="flex gap-5 py-2 mt-3 items-center">
         <p>Buscar</p>
         <input 
         type="text"  
         className="w-full p-1 text-black"
         value={search}
         onChange={(e)=>setSearch(e.target.value)}
-        
-        />
+        />     
+       
       </div>
       }
 
-      {res.map((item) => (
+      {filteredResults.map((item) => (
         
         <div
           className="flex  flex-col gap-3 justify-between border border-gray-700 my-5 p-2  bg-white/10"
