@@ -61,7 +61,7 @@ export const ShowData = () => {
     );
 
   return (
-    <div className="border px-5 m-1  justify-between items-center">
+    <div className="border px-5 m-1 h-full  justify-between items-center">
 
       {(res.length === 0) &&
         <div className=" flex flex-col justify-center items-center p-5">

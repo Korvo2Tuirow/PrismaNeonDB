@@ -4,7 +4,7 @@ import { ShowData } from "@/components/ShowData";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-gradient-to-t from-blue-950 to-blue-500">
       <AddData />
       <ShowData />
     </div>
